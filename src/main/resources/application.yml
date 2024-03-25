@@ -1,0 +1,20 @@
+server:
+  port: 8015
+
+spring:
+##  datasource:
+##    password: 1234
+##    username: root
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3306/storeexample
+#    url: r2dbc:mysql://localhost:3306/storeexample
+    username: root
+    password: 1234
+#    pool:
+##      enabled: true
+#      initial-size: 10
+#      max-size: 100
+#      max-idle-time: 30m
+#      validation-query: SELECT 1
+#    url: jdbc:mysql://localhost:3306/art_without_border?requireSSL=false&useUnicode=true&characterEncoding=utf8
+
