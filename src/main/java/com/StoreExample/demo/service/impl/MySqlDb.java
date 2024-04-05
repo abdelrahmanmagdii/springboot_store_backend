@@ -32,19 +32,9 @@ public class MySqlDb implements DatabaseTemplate {
     public Mono<List<ProductDao>> findByName(String name) {
         return productRepo.findByNameContains(name).collectList();
     }
-
-//    Buy (product, quantity)
-//
-//    quantity -- | product
-//    create sale  {saleId, product, quantity) | sale
-//        if(sale.quantity > product.quantity) { error }
-
-
     @Override
     public Mono<Sale> buyProduct(Long productIdd, int quantity) {
-        // Mono<Product> p = productRepo.findById(productId).switchIfEmpty(Mono.just(Product.builder().build()));
         Mono<ProductDao> p = productRepo.findById(productIdd);
-//            p.subscribe();
         return p.mapNotNull(product -> {
 
                     System.out.println("yarab1");
