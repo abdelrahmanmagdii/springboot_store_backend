@@ -37,13 +37,10 @@ public class MySqlDb implements DatabaseTemplate {
         Mono<ProductDao> p = productRepo.findById(productIdd);
         return p.mapNotNull(product -> {
 
-                    System.out.println("yarab1");
                     int salePrice = product.getUnitPrice() * quantity;
-                    System.out.println("yarab2");
                     updateProduct( product, quantity);
                     Product productPojo = new Product(product);
                     productRepo.save(product).subscribe();
-                    System.out.println("yarab3");
                     SaleDao newSale = SaleDao.builder()
                             .productId(productIdd)
                             .price(salePrice)
